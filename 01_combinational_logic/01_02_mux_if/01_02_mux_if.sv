@@ -28,9 +28,13 @@ module mux_4_1
   output logic [3:0] y
 );
 
-  // Task:
-  // Using code for mux_2_1 as an example,
-  // write code for 4:1 mux using the "if" statement
-
-
+  always_comb
+    if (!sel[0] & !sel[1])
+      y = d0;
+    else if (sel[0] & !sel[1])
+      y = d1;
+    else if (!sel[0] & sel[1])
+      y = d2;
+    else if (sel[0] & sel[1])
+      y = d3;
 endmodule
